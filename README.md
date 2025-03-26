@@ -3,7 +3,7 @@
 🚀 **Projeto de TCC: Desenvolvimento de uma Plataforma Web para Precificação Inteligente no Setor Varejista**
 
 ## 📌 Sobre o Projeto
-Este projeto visa automatizar o monitoramento de preços da concorrência utilizando **n8n para Web Scraping**, **AWS para infraestrutura** e **Machine Learning (SageMaker)** para sugerir ajustes dinâmicos de preços. A plataforma auxilia pequenos e médios varejistas a manterem preços competitivos de forma eficiente.
+Este projeto visa automatizar o monitoramento de preços da concorrência utilizando **n8n para Web Scraping, automação de processos e backend**, **AWS para infraestrutura** e **Machine Learning (SageMaker)** para sugerir ajustes dinâmicos de preços. A plataforma auxilia pequenos e médios varejistas a manterem preços competitivos de forma eficiente.
 
 ---
 
@@ -12,7 +12,7 @@ Este projeto visa automatizar o monitoramento de preços da concorrência utiliz
 | **Camada**       | **Tecnologia Utilizada**         | **Responsabilidade** |
 |-----------------|--------------------------------|----------------------|
 | **Frontend**    | React.js (AWS Amplify)         | Interface gráfica para os lojistas |
-| **Backend**     | Spring Boot (AWS Fargate)      | Processamento dos dados e regras de precificação |
+| **Backend**     | n8n (Self-hosted ou Cloud)     | Processamento dos dados e aplicação de regras de precificação |
 | **Banco de Dados** | Amazon RDS (PostgreSQL)    | Armazena preços coletados e históricos |
 | **Web Scraping** | n8n (com Puppeteer/HTTP Request) | Captura os preços da concorrência automaticamente |
 | **Machine Learning** | Amazon SageMaker          | Analisa padrões e sugere ajustes de preços |
@@ -22,10 +22,9 @@ Este projeto visa automatizar o monitoramento de preços da concorrência utiliz
 ---
 
 ## ⚙️ Tecnologias Utilizadas
-- **n8n** para Web Scraping e automação de processos 🔄
-- **Spring Boot** no backend ⚡
+- **n8n** para Web Scraping, Backend e automação de processos 🔄
 - **React.js** para o frontend 🎨
-- **AWS (Amplify, RDS, Fargate, SageMaker, API Gateway, Lambda)** ☁️
+- **AWS (Amplify, RDS, API Gateway, SageMaker, Lambda)** ☁️
 - **PostgreSQL** como banco de dados 📊
 - **Docker** para containerização 🐳
 - **Puppeteer** para extração de dados de sites 🕵️‍♂️
@@ -35,22 +34,7 @@ Este projeto visa automatizar o monitoramento de preços da concorrência utiliz
 
 ## 🛠️ Como Rodar o Projeto
 
-### 📌 1️⃣ Configurar e Rodar o Backend (Spring Boot)
-```sh
-# Clone o repositório
-git clone https://github.com/seu-usuario/precificacao-inteligente.git
-cd precificacao-inteligente/backend
-
-# Configurar o banco de dados no application.properties
-cp src/main/resources/application.example.properties src/main/resources/application.properties
-
-# Rodar a aplicação
-mvn spring-boot:run
-```
-
----
-
-### 📌 2️⃣ Configurar e Rodar o n8n (Web Scraping & Automação)
+### 📌 1️⃣ Configurar e Rodar o Backend no n8n
 ```sh
 # Instalar o n8n
 tnpm install -g n8n
@@ -61,13 +45,13 @@ n8n start
 # Acesse o painel de automação
 http://localhost:5678
 ```
-⚠️ **Certifique-se de configurar os fluxos de scraping e integração com o banco no n8n!**
+⚠️ **Certifique-se de configurar os fluxos de backend, scraping e integração com o banco no n8n!**
 
 ---
 
-### 📌 3️⃣ Rodar o Frontend (React.js)
+### 📌 2️⃣ Rodar o Frontend (React.js)
 ```sh
-cd ../frontend
+cd frontend
 npm install
 npm start
 ```
@@ -78,7 +62,7 @@ O frontend estará disponível em: **http://localhost:3000**
 ## 📊 Fluxo de Funcionamento
 
 1️⃣ **Web Scraping com n8n** → Coleta preços automaticamente e envia para o RDS 📊  
-2️⃣ **Spring Boot Processa os Dados** → Armazena, analisa e disponibiliza via API ⚡  
+2️⃣ **n8n Processa os Dados** → Armazena, analisa e disponibiliza via API ⚡  
 3️⃣ **Machine Learning (SageMaker)** → Sugere ajustes dinâmicos nos preços 🔍  
 4️⃣ **n8n Notifica Lojistas** → Alerta sobre variações de preço 📩  
 5️⃣ **Frontend Exibe os Dados** → Dashboard interativo no React.js 🎨  
